@@ -2,11 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CultureSense AI Modern Design System */
+/* CultureSense AI Modern Design System - Light & Dark Modes */
 
 @layer base {
   :root {
-    /* Core Brand Colors */
+    /* Light Mode Colors */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    /* Glass Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --card-glass: 220 14% 96%;
+
+    /* Navigation & Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --nav-glass: 255 255 255 / 0.8;
+
+    /* Primary: Deep Purple */
+    --primary: 258 90% 66%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 258 100% 75%;
+
+    /* Secondary: Soft Teal */
+    --secondary: 170 75% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 170 85% 70%;
+
+    /* Accent Colors */
+    --accent-rose: 350 75% 70%;
+    --accent-amber: 45 90% 60%;
+    --accent-purple: 258 90% 66%;
+    --accent: 170 75% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Neutral System */
+    --muted: 220 13% 91%;
+    --muted-foreground: 220 9% 46%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 258 90% 66%;
+
+    /* Destructive */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Glass Effects */
+    --glass-bg: 255 255 255 / 0.7;
+    --glass-border: 220 20% 85% / 0.5;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(258 90% 66%), hsl(170 75% 60%));
+    --gradient-glass: linear-gradient(135deg, 
+      hsl(255 255 255 / 0.8), 
+      hsl(255 255 255 / 0.6)
+    );
+    --gradient-hero: linear-gradient(135deg, 
+      hsl(258 90% 66% / 0.05), 
+      hsl(170 75% 60% / 0.05),
+      hsl(350 75% 70% / 0.05)
+    );
+
+    /* Shadows & Effects */
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08),
+                   inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --shadow-elevation: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+    /* Animation Variables */
+    --animation-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Spacing & Sizing */
+    --radius: 1rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1.5rem;
+  }
+
+  .dark {
+    /* Dark Mode Colors */
     --background: 220 25% 6%;
     --foreground: 220 20% 92%;
 
@@ -70,15 +146,6 @@
                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
     --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.15);
     --shadow-elevation: 0 12px 40px rgba(0, 0, 0, 0.3);
-
-    /* Animation Variables */
-    --animation-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --animation-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    /* Spacing & Sizing */
-    --radius: 1rem;
-    --radius-sm: 0.5rem;
-    --radius-lg: 1.5rem;
   }
 }
 
@@ -97,20 +164,28 @@
 @layer components {
   /* Glass Effect Components */
   .glass-card {
-    @apply backdrop-blur-md bg-gradient-to-br from-card-glass/60 to-card/80;
-    @apply border border-white/10 rounded-2xl;
+    @apply backdrop-blur-md border rounded-2xl;
+    background: var(--gradient-glass);
+    border-color: hsl(var(--glass-border));
     box-shadow: var(--shadow-glass);
   }
 
   .glass-nav {
-    @apply backdrop-blur-lg bg-nav-glass border-b border-white/10;
+    @apply backdrop-blur-lg border-b;
+    background: hsl(var(--nav-glass));
+    border-color: hsl(var(--border) / 0.1);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   }
 
   .glass-button {
-    @apply backdrop-blur-sm bg-white/5 hover:bg-white/10;
-    @apply border border-white/10 hover:border-white/20;
-    @apply transition-all duration-300;
+    @apply backdrop-blur-sm border transition-all duration-300;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+  }
+
+  .glass-button:hover {
+    background: hsl(var(--muted) / 0.2);
+    border-color: hsl(var(--border));
   }
 
   /* Animation Classes */

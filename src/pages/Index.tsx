@@ -79,37 +79,38 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-12 overflow-hidden">
+      <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="CultureSense AI"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-20 dark:opacity-10"
           />
-          <div className="absolute inset-0 bg-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40" />
         </div>
         
         <div className="relative container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-primary/20 text-primary border-primary/30">
+          <div className="max-w-5xl mx-auto text-center">
+            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 hover-lift">
               <Eye className="w-3 h-3 mr-1" />
               AI-Powered Cultural Analysis
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              <span className="gradient-text">Discover Your</span>
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+              <span className="gradient-text animate-glow">Discover Your</span>
               <br />
               <span className="text-foreground">Cultural DNA</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Advanced AI analyzes your taste patterns to unlock personalized cultural recommendations and predict trends before they happen.
+            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+              Advanced AI analyzes your taste patterns to unlock personalized cultural recommendations 
+              and predict trends before they emerge into mainstream consciousness.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="lg" className="animate-slide-up">
-                Start Analysis
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button variant="hero" size="lg" className="animate-slide-up hover-lift text-lg px-8 py-4">
+                Start Cultural Analysis
                 <TrendingUp className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="glass" size="lg" className="animate-slide-up">
-                View Dashboard
+              <Button variant="glass" size="lg" className="animate-slide-up text-lg px-8 py-4">
+                Explore Dashboard
                 <Eye className="w-5 h-5 ml-2" />
               </Button>
             </div>
@@ -129,53 +130,54 @@ const Index = () => {
       </section>
 
       {/* Active Insights */}
-      <section className="container mx-auto px-6 py-8">
-        <Card className="glass-card mb-8">
-          <CardHeader>
+      <section className="container mx-auto px-6 py-12">
+        <Card className="glass-card mb-12 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-primary opacity-5 rounded-full blur-3xl"></div>
+          <CardHeader className="relative">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-3xl font-bold text-foreground mb-2">
                   Active Cultural Insights
                 </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Real-time analysis of your evolving taste profile
+                <CardDescription className="text-lg text-muted-foreground">
+                  Real-time analysis of your evolving taste profile and cultural patterns
                 </CardDescription>
               </div>
-              <Badge className="bg-secondary/20 text-secondary border-secondary/30 status-online">
-                <Bell className="w-3 h-3 mr-1" />
-                Live
+              <Badge className="bg-secondary/20 text-secondary border-secondary/30 status-online px-4 py-2">
+                <Bell className="w-4 h-4 mr-2" />
+                Live Analysis
               </Badge>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
-                <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-6 h-6 text-primary" />
+          <CardContent className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 hover-lift">
+                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-glow">
+                  <Star className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">Emerging Patterns</h3>
-                <p className="text-sm text-muted-foreground">
-                  You're developing a strong preference for neo-minimalist aesthetics
+                <h3 className="text-xl font-semibold text-foreground mb-3">Emerging Patterns</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Your taste profile shows strong affinity for neo-minimalist aesthetics and sustainable design principles
                 </p>
               </div>
               
-              <div className="text-center p-6 rounded-xl bg-gradient-to-br from-secondary/10 to-accent-rose/10 border border-secondary/20">
-                <div className="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-secondary" />
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-secondary/10 via-secondary/5 to-transparent border border-secondary/20 hover-lift">
+                <div className="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-glow">
+                  <TrendingUp className="w-8 h-8 text-secondary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">Trend Prediction</h3>
-                <p className="text-sm text-muted-foreground">
-                  Your taste profile suggests early adoption of sustainable design
+                <h3 className="text-xl font-semibold text-foreground mb-3">Trend Prediction</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  AI predicts 94% likelihood of your early adoption in sustainable luxury movement
                 </p>
               </div>
               
-              <div className="text-center p-6 rounded-xl bg-gradient-to-br from-accent-rose/10 to-primary/10 border border-accent-rose/20">
-                <div className="w-12 h-12 bg-accent-rose/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-accent-rose" />
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-accent-rose/10 via-accent-rose/5 to-transparent border border-accent-rose/20 hover-lift">
+                <div className="w-16 h-16 bg-accent-rose/20 rounded-2xl flex items-center justify-center mx-auto mb-6 hover-glow">
+                  <Users className="w-8 h-8 text-accent-rose" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">Cultural Match</h3>
-                <p className="text-sm text-muted-foreground">
-                  94% alignment with Scandinavian design philosophy
+                <h3 className="text-xl font-semibold text-foreground mb-3">Cultural Resonance</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Your taste alignment resonates with Nordic design philosophy at 96.4% compatibility
                 </p>
               </div>
             </div>
@@ -184,23 +186,23 @@ const Index = () => {
       </section>
 
       {/* Recommendations */}
-      <section className="container mx-auto px-6 py-8">
-        <div className="flex items-center justify-between mb-8">
+      <section className="container mx-auto px-6 py-12">
+        <div className="flex items-center justify-between mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-foreground mb-2">
-              Personalized Recommendations
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              <span className="gradient-text">Personalized</span> Recommendations
             </h2>
-            <p className="text-muted-foreground">
-              AI-curated cultural discoveries based on your unique taste profile
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              AI-curated cultural discoveries based on your unique taste profile and emerging preference patterns
             </p>
           </div>
-          <Button variant="outline">
-            View All
-            <TrendingUp className="w-4 h-4 ml-2" />
+          <Button variant="outline" className="hover-lift">
+            <TrendingUp className="w-4 h-4 mr-2" />
+            View All Recommendations
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recommendations.map((rec, index) => (
             <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.15}s` }}>
               <RecommendationCard {...rec} />

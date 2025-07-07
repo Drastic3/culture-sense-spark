@@ -86,32 +86,32 @@ const Chat = () => {
           </div>
 
           {/* Chat Messages */}
-          <div className="space-y-6 mb-6">
+          <div className="space-y-8 mb-8">
             {messages.map((message) => (
               <div key={message.id} className="animate-slide-up">
                 {message.sender === "ai" ? (
-                  <div className="flex items-start space-x-4">
-                    <Avatar className="w-10 h-10 border-2 border-primary/30">
-                      <AvatarFallback className="bg-gradient-primary text-white text-sm">
+                  <div className="flex items-start space-x-6">
+                    <Avatar className="w-12 h-12 border-2 border-primary/30 hover-glow">
+                      <AvatarFallback className="bg-gradient-primary text-white text-sm font-semibold">
                         AI
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex-1 max-w-3xl">
-                      <Card className="glass-card">
-                        <CardContent className="p-4">
-                          <p className="text-foreground leading-relaxed">{message.content}</p>
+                    <div className="flex-1 max-w-4xl">
+                      <Card className="glass-card hover-lift">
+                        <CardContent className="p-6">
+                          <p className="text-foreground leading-relaxed text-lg">{message.content}</p>
                         </CardContent>
                       </Card>
                       
                       {message.suggestions && (
-                        <div className="flex flex-wrap gap-2 mt-3">
+                        <div className="flex flex-wrap gap-3 mt-4">
                           {message.suggestions.map((suggestion, index) => (
                             <Button
                               key={index}
                               variant="pill"
                               size="sm"
                               onClick={() => handleSuggestionClick(suggestion)}
-                              className="text-xs hover-lift"
+                              className="text-sm hover-lift bg-muted/50 hover:bg-primary/20 hover:text-primary border border-muted hover:border-primary/30"
                             >
                               {suggestion}
                             </Button>
@@ -121,16 +121,16 @@ const Chat = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-start space-x-4 justify-end">
-                    <div className="flex-1 max-w-2xl">
-                      <Card className="bg-primary/10 border-primary/20">
-                        <CardContent className="p-4">
-                          <p className="text-foreground leading-relaxed">{message.content}</p>
+                  <div className="flex items-start space-x-6 justify-end">
+                    <div className="flex-1 max-w-3xl">
+                      <Card className="bg-primary/10 border-primary/20 hover-lift">
+                        <CardContent className="p-6">
+                          <p className="text-foreground leading-relaxed text-lg">{message.content}</p>
                         </CardContent>
                       </Card>
                     </div>
-                    <Avatar className="w-10 h-10 border-2 border-secondary/30">
-                      <AvatarFallback className="bg-secondary text-white text-sm">
+                    <Avatar className="w-12 h-12 border-2 border-secondary/30">
+                      <AvatarFallback className="bg-secondary text-white text-sm font-semibold">
                         You
                       </AvatarFallback>
                     </Avatar>
@@ -140,21 +140,21 @@ const Chat = () => {
             ))}
 
             {isTyping && (
-              <div className="flex items-start space-x-4 animate-scale-in">
-                <Avatar className="w-10 h-10 border-2 border-primary/30">
-                  <AvatarFallback className="bg-gradient-primary text-white text-sm">
+              <div className="flex items-start space-x-6 animate-scale-in">
+                <Avatar className="w-12 h-12 border-2 border-primary/30 hover-glow">
+                  <AvatarFallback className="bg-gradient-primary text-white text-sm font-semibold">
                     AI
                   </AvatarFallback>
                 </Avatar>
                 <Card className="glass-card">
-                  <CardContent className="p-4">
-                    <div className="flex items-center space-x-2 text-muted-foreground">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-4 text-muted-foreground">
+                      <div className="flex space-x-2">
+                        <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                        <div className="w-3 h-3 bg-primary rounded-full animate-pulse" style={{animationDelay: "0.2s"}}></div>
+                        <div className="w-3 h-3 bg-primary rounded-full animate-pulse" style={{animationDelay: "0.4s"}}></div>
                       </div>
-                      <span className="text-sm">AI is analyzing...</span>
+                      <span className="text-base">CultureSense AI is analyzing your cultural patterns...</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -165,51 +165,61 @@ const Chat = () => {
           </div>
 
           {/* Context Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <Card className="glass-card p-4 text-center">
-              <Heart className="w-6 h-6 text-accent-rose mx-auto mb-2" />
-              <h3 className="font-medium text-foreground mb-1">Active Preferences</h3>
-              <p className="text-xs text-muted-foreground">Minimalist, Artistic</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="glass-card p-6 text-center hover-lift">
+              <Heart className="w-8 h-8 text-accent-rose mx-auto mb-4 hover-glow" />
+              <h3 className="text-lg font-medium text-foreground mb-2">Active Preferences</h3>
+              <p className="text-sm text-muted-foreground">Minimalist • Artistic • Sustainable</p>
+              <div className="mt-3 flex justify-center">
+                <Badge variant="secondary" className="text-xs">87% Match</Badge>
+              </div>
             </Card>
             
-            <Card className="glass-card p-4 text-center">
-              <Star className="w-6 h-6 text-accent-amber mx-auto mb-2" />
-              <h3 className="font-medium text-foreground mb-1">Taste Score</h3>
-              <p className="text-xs text-muted-foreground">94.3% Refined</p>
+            <Card className="glass-card p-6 text-center hover-lift">
+              <Star className="w-8 h-8 text-accent-amber mx-auto mb-4 hover-glow" />
+              <h3 className="text-lg font-medium text-foreground mb-2">Taste Refinement</h3>
+              <p className="text-sm text-muted-foreground">Elite Cultural Curator</p>
+              <div className="mt-3 flex justify-center">
+                <Badge variant="secondary" className="text-xs">94.3% Accuracy</Badge>
+              </div>
             </Card>
             
-            <Card className="glass-card p-4 text-center">
-              <TrendingUp className="w-6 h-6 text-secondary mx-auto mb-2" />
-              <h3 className="font-medium text-foreground mb-1">Trend Status</h3>
-              <p className="text-xs text-muted-foreground">Early Adopter</p>
+            <Card className="glass-card p-6 text-center hover-lift">
+              <TrendingUp className="w-8 h-8 text-secondary mx-auto mb-4 hover-glow" />
+              <h3 className="text-lg font-medium text-foreground mb-2">Trend Influence</h3>
+              <p className="text-sm text-muted-foreground">Early Adopter Status</p>
+              <div className="mt-3 flex justify-center">
+                <Badge variant="secondary" className="text-xs">Top 5% Globally</Badge>
+              </div>
             </Card>
           </div>
 
           {/* Input Area */}
-          <Card className="glass-card fixed bottom-20 md:relative md:bottom-auto left-4 right-4 md:left-auto md:right-auto">
-            <CardContent className="p-4">
-              <div className="flex items-center space-x-3">
-                <div className="flex-1 flex items-center space-x-2">
+          <Card className="glass-card fixed bottom-20 md:relative md:bottom-auto left-4 right-4 md:left-auto md:right-auto border-primary/20">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-4">
+                <div className="flex-1 flex items-center space-x-3">
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask about your cultural preferences..."
-                    className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground"
+                    placeholder="Ask about your cultural preferences and patterns..."
+                    className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg"
                     onKeyPress={(e) => e.key === "Enter" && handleSendMessage(inputValue)}
                   />
                 </div>
                 
-                <div className="flex items-center space-x-2">
-                  <Button variant="ghost" size="sm" className="p-2">
-                    <Mic className="w-4 h-4" />
+                <div className="flex items-center space-x-3">
+                  <Button variant="ghost" size="sm" className="p-3 hover-glow">
+                    <Mic className="w-5 h-5" />
                   </Button>
                   <Button 
                     variant="default" 
                     size="sm" 
                     onClick={() => handleSendMessage(inputValue)}
                     disabled={!inputValue.trim()}
+                    className="px-6 py-3 hover-lift"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-5 h-5" />
                   </Button>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { ModeToggle } from "@/components/ModeToggle";
 import { 
   Bell, 
   Search, 
@@ -89,6 +90,8 @@ const Navigation = () => {
           </div>
 
           {/* Settings */}
+          <ModeToggle />
+          
           <Button variant="glass" size="sm">
             <Settings className="w-4 h-4" />
           </Button>

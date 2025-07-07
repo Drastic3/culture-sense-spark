@@ -80,40 +80,40 @@ const Discover = () => {
       <div className="pt-20 pb-24 md:pb-8">
         <div className="container mx-auto px-6">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
-              <span className="gradient-text">Discover</span> Culture
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-bold text-foreground mb-6">
+              <span className="gradient-text animate-glow">Discover</span> Culture
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              AI-powered cultural discoveries tailored to your unique taste profile and emerging preferences
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              AI-powered cultural discoveries tailored to your unique taste profile and emerging aesthetic preferences
             </p>
           </div>
 
           {/* Search & Filters */}
-          <div className="flex flex-col lg:flex-row items-center gap-6 mb-12">
-            <div className="flex-1 max-w-md">
+          <div className="flex flex-col lg:flex-row items-center gap-8 mb-16">
+            <div className="flex-1 max-w-lg">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search cultural discoveries..."
-                  className="pl-10 glass-card border-0 bg-white/5"
+                  placeholder="Search cultural discoveries and hidden gems..."
+                  className="pl-12 pr-4 py-4 text-lg glass-card border-0 bg-white/5 focus-visible:ring-2 focus-visible:ring-primary/50"
                 />
               </div>
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto pb-2">
+            <div className="flex items-center gap-3 overflow-x-auto pb-2">
               {categories.map((category) => (
                 <Button
                   key={category.id}
                   variant={activeCategory === category.id ? "default" : "glass"}
                   size="sm"
                   onClick={() => setActiveCategory(category.id)}
-                  className="whitespace-nowrap"
+                  className="whitespace-nowrap hover-lift px-6 py-3"
                 >
                   {category.label}
-                  <Badge variant="secondary" className="ml-2 text-xs">
+                  <Badge variant="secondary" className="ml-3 text-xs bg-muted/50">
                     {category.count}
                   </Badge>
                 </Button>
@@ -122,50 +122,50 @@ const Discover = () => {
           </div>
 
           {/* Stats Overview */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            <Card className="glass-card text-center p-6">
-              <Star className="w-8 h-8 text-accent-amber mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">4.8</div>
-              <div className="text-sm text-muted-foreground">Avg Rating</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <Card className="glass-card text-center p-8 hover-lift">
+              <Star className="w-10 h-10 text-accent-amber mx-auto mb-4 hover-glow" />
+              <div className="text-3xl font-bold text-foreground mb-2">4.8</div>
+              <div className="text-muted-foreground">Average Rating</div>
             </Card>
             
-            <Card className="glass-card text-center p-6">
-              <Heart className="w-8 h-8 text-accent-rose mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">847</div>
-              <div className="text-sm text-muted-foreground">Saved Items</div>
+            <Card className="glass-card text-center p-8 hover-lift">
+              <Heart className="w-10 h-10 text-accent-rose mx-auto mb-4 hover-glow" />
+              <div className="text-3xl font-bold text-foreground mb-2">847</div>
+              <div className="text-muted-foreground">Curated Items</div>
             </Card>
             
-            <Card className="glass-card text-center p-6">
-              <TrendingUp className="w-8 h-8 text-secondary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">23</div>
-              <div className="text-sm text-muted-foreground">Trending</div>
+            <Card className="glass-card text-center p-8 hover-lift">
+              <TrendingUp className="w-10 h-10 text-secondary mx-auto mb-4 hover-glow" />
+              <div className="text-3xl font-bold text-foreground mb-2">23</div>
+              <div className="text-muted-foreground">Trending Now</div>
             </Card>
             
-            <Card className="glass-card text-center p-6">
-              <Grid2X2 className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-foreground">156</div>
-              <div className="text-sm text-muted-foreground">Categories</div>
+            <Card className="glass-card text-center p-8 hover-lift">
+              <Grid2X2 className="w-10 h-10 text-primary mx-auto mb-4 hover-glow" />
+              <div className="text-3xl font-bold text-foreground mb-2">156</div>
+              <div className="text-muted-foreground">Categories</div>
             </Card>
           </div>
 
           {/* Trending Section */}
-          <div className="mb-12">
-            <div className="flex items-center justify-between mb-6">
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-10">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  Trending Discoveries
+                <h2 className="text-3xl font-bold text-foreground mb-3">
+                  <span className="gradient-text">Trending</span> Discoveries
                 </h2>
-                <p className="text-muted-foreground">
-                  Popular cultural finds among users with similar taste profiles
+                <p className="text-lg text-muted-foreground max-w-2xl">
+                  Popular cultural finds among users with similar sophisticated taste profiles and aesthetic sensibilities
                 </p>
               </div>
-              <Badge className="bg-accent-amber/20 text-accent-amber border-accent-amber/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Hot Right Now
+              <Badge className="bg-accent-amber/20 text-accent-amber border-accent-amber/30 px-4 py-2 hover-lift">
+                <TrendingUp className="w-4 h-4 mr-2" />
+                Hot Cultural Trends
               </Badge>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {discoveries.filter(d => d.trending).map((discovery, index) => (
                 <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <RecommendationCard {...discovery} />
