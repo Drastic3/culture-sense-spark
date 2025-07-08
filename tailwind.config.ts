@@ -69,19 +69,30 @@ export default {
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-glass': 'var(--gradient-glass)',
-				'gradient-hero': 'var(--gradient-hero)'
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-nav': 'var(--gradient-nav)',
+				'gradient-neuro': 'var(--gradient-neuro)'
 			},
 			boxShadow: {
 				'glass': 'var(--shadow-glass)',
+				'neuro': 'var(--shadow-neuro)',
+				'neuro-inset': 'var(--shadow-neuro-inset)',
 				'card': 'var(--shadow-card)',
-				'elevation': 'var(--shadow-elevation)'
+				'elevation': 'var(--shadow-elevation)',
+				'hover': 'var(--shadow-hover)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
 				'radius-sm': 'var(--radius-sm)',
-				'radius-lg': 'var(--radius-lg)'
+				'radius-lg': 'var(--radius-lg)',
+				'radius-xl': 'var(--radius-xl)',
+				'pill': 'var(--radius-pill)'
+			},
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'poppins': ['Poppins', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {

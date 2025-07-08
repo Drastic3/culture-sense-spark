@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Send, Mic, Heart, Star, TrendingUp } from "lucide-react";
+import { Send, Mic, Heart, Star, TrendingUp, MessageSquare } from "lucide-react";
 
 interface Message {
   id: string;
@@ -76,12 +76,16 @@ const Chat = () => {
       <div className="pt-20 pb-24 md:pb-8">
         <div className="container mx-auto px-6 max-w-4xl">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-foreground mb-2">
-              <span className="gradient-text">AI Cultural</span> Assistant
+          <div className="text-center mb-16">
+            <Badge className="mb-6 pill-button bg-secondary/10 text-secondary border-secondary/20 animate-fade-in-scale">
+              <MessageSquare className="w-3 h-3 mr-1 animate-pulse" />
+              AI-Powered Cultural Chat
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold font-poppins text-foreground mb-6">
+              <span className="gradient-text animate-glow">AI Cultural</span> Assistant
             </h1>
-            <p className="text-muted-foreground">
-              Deep conversations about your taste, preferences, and cultural insights
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-inter">
+              Engage with our advanced AI to explore, refine, and expand your cultural taste profile through natural conversation
             </p>
           </div>
 
@@ -97,21 +101,20 @@ const Chat = () => {
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1 max-w-4xl">
-                      <Card className="glass-card hover-lift">
-                        <CardContent className="p-6">
-                          <p className="text-foreground leading-relaxed text-lg">{message.content}</p>
-                        </CardContent>
-                      </Card>
+                      <div className="rounded-3xl backdrop-blur-md bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent border border-primary/10 p-6 shadow-hover micro-lift">
+                        <p className="text-foreground leading-relaxed text-lg font-inter">{message.content}</p>
+                      </div>
                       
                       {message.suggestions && (
-                        <div className="flex flex-wrap gap-3 mt-4">
+                        <div className="flex flex-wrap gap-3 mt-6">
                           {message.suggestions.map((suggestion, index) => (
                             <Button
                               key={index}
-                              variant="pill"
+                              variant="pill-glass"
                               size="sm"
                               onClick={() => handleSuggestionClick(suggestion)}
-                              className="text-sm hover-lift bg-muted/50 hover:bg-primary/20 hover:text-primary border border-muted hover:border-primary/30"
+                              className="text-sm micro-bounce animate-fade-in-scale"
+                              style={{ animationDelay: `${index * 0.1}s` }}
                             >
                               {suggestion}
                             </Button>
@@ -122,15 +125,13 @@ const Chat = () => {
                   </div>
                 ) : (
                   <div className="flex items-start space-x-6 justify-end">
-                    <div className="flex-1 max-w-3xl">
-                      <Card className="bg-primary/10 border-primary/20 hover-lift">
-                        <CardContent className="p-6">
-                          <p className="text-foreground leading-relaxed text-lg">{message.content}</p>
-                        </CardContent>
-                      </Card>
+                    <div className="flex-1 max-w-3xl text-right">
+                      <div className="rounded-3xl backdrop-blur-md bg-gradient-to-br from-secondary/10 via-accent-rose/5 to-transparent border border-secondary/15 p-6 shadow-hover micro-lift ml-auto inline-block">
+                        <p className="text-foreground leading-relaxed text-lg font-inter">{message.content}</p>
+                      </div>
                     </div>
-                    <Avatar className="w-12 h-12 border-2 border-secondary/30">
-                      <AvatarFallback className="bg-secondary text-white text-sm font-semibold">
+                    <Avatar className="w-12 h-12 border-2 border-secondary/30 shadow-hover">
+                      <AvatarFallback className="bg-gradient-to-br from-secondary to-accent-rose text-white text-sm font-semibold">
                         You
                       </AvatarFallback>
                     </Avatar>

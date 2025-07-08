@@ -91,27 +91,27 @@ const Index = () => {
         
         <div className="relative container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 hover-lift">
-              <Eye className="w-3 h-3 mr-1" />
+            <Badge className="mb-8 pill-button bg-primary/10 text-primary border-primary/20 animate-fade-in-scale">
+              <Eye className="w-3 h-3 mr-1 animate-pulse" />
               AI-Powered Cultural Analysis
             </Badge>
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="text-6xl md:text-8xl font-bold font-poppins mb-8 leading-tight">
               <span className="gradient-text animate-glow">Discover Your</span>
               <br />
-              <span className="text-foreground">Cultural DNA</span>
+              <span className="text-foreground animate-fade-in-up">Cultural DNA</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-inter">
               Advanced AI analyzes your taste patterns to unlock personalized cultural recommendations 
               and predict trends before they emerge into mainstream consciousness.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button variant="hero" size="lg" className="animate-slide-up hover-lift text-lg px-8 py-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+              <Button variant="hero" size="xl" className="animate-fade-in-up micro-bounce text-lg font-semibold shadow-hover">
                 Start Cultural Analysis
-                <TrendingUp className="w-5 h-5 ml-2" />
+                <TrendingUp className="w-5 h-5 ml-2 animate-bounce-gentle" />
               </Button>
-              <Button variant="glass" size="lg" className="animate-slide-up text-lg px-8 py-4">
+              <Button variant="pill-glass" size="xl" className="animate-fade-in-up font-semibold">
                 Explore Dashboard
-                <Eye className="w-5 h-5 ml-2" />
+                <Eye className="w-5 h-5 ml-2 micro-glow" />
               </Button>
             </div>
           </div>

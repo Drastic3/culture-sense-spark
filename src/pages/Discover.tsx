@@ -81,10 +81,14 @@ const Discover = () => {
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-foreground mb-6">
+            <Badge className="mb-6 pill-button bg-accent-rose/10 text-accent-rose border-accent-rose/20 animate-fade-in-scale">
+              <Heart className="w-3 h-3 mr-1 animate-pulse" />
+              Cultural Discovery Engine
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold font-poppins text-foreground mb-6">
               <span className="gradient-text animate-glow">Discover</span> Culture
             </h1>
-            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-inter">
               AI-powered cultural discoveries tailored to your unique taste profile and emerging aesthetic preferences
             </p>
           </div>
