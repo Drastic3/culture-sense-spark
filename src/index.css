@@ -433,4 +433,19 @@
   .micro-glow:hover {
     filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
   }
+
+  /* Enhanced Hover Effects */
+  .hover-scale-102 {
+    @apply transition-all duration-300 hover:scale-[1.02];
+  }
+
+  /* Scrollbar Hide */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

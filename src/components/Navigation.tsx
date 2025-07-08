@@ -54,13 +54,13 @@ const Navigation = () => {
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <NavLink
+                <NavLink
                 key={item.path}
                 to={item.path}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                className={`flex items-center space-x-3 px-5 py-3 rounded-xl transition-all duration-300 ${
                   isActive(item.path)
-                    ? "bg-primary/20 text-primary border border-primary/30"
-                    : "hover:bg-white/5 text-muted-foreground hover:text-foreground"
+                    ? "bg-gradient-primary text-white shadow-card border border-primary/20 scale-105"
+                    : "glass-card border-white/10 text-muted-foreground hover:text-primary hover:bg-primary/5 hover:border-primary/30 hover:scale-102"
                 }`}
               >
                 <Icon className="w-4 h-4" />

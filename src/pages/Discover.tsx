@@ -107,17 +107,30 @@ const Discover = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+            <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
               {categories.map((category) => (
                 <Button
                   key={category.id}
-                  variant={activeCategory === category.id ? "default" : "glass"}
-                  size="sm"
+                  variant={activeCategory === category.id ? "default" : "outline"}
+                  size="lg"
                   onClick={() => setActiveCategory(category.id)}
-                  className="whitespace-nowrap hover-lift px-6 py-3"
+                  className={`
+                    whitespace-nowrap px-8 py-4 rounded-2xl transition-all duration-300 min-w-fit
+                    ${activeCategory === category.id 
+                      ? "bg-gradient-primary text-white shadow-hover border-0 scale-105" 
+                      : "glass-card border-primary/20 text-foreground hover:border-primary/40 hover:bg-primary/5 hover:scale-102"
+                    }
+                  `}
                 >
-                  {category.label}
-                  <Badge variant="secondary" className="ml-3 text-xs bg-muted/50">
+                  <span className="font-medium">{category.label}</span>
+                  <Badge 
+                    variant="secondary" 
+                    className={`ml-3 text-xs rounded-full px-2 py-1 ${
+                      activeCategory === category.id 
+                        ? "bg-white/20 text-white border-0" 
+                        : "bg-primary/10 text-primary border-primary/20"
+                    }`}
+                  >
                     {category.count}
                   </Badge>
                 </Button>
