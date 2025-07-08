@@ -114,22 +114,24 @@ const Insights = () => {
       <div className="pt-20 pb-24 md:pb-8">
         <div className="container mx-auto px-6 max-w-7xl">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-            <div>
-              <h1 className="text-4xl font-bold text-foreground mb-2">
-                <span className="gradient-text">Cultural</span> Insights
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Deep analytics on your taste evolution and cultural impact
-              </p>
-            </div>
+          <div className="text-center mb-16">
+            <Badge className="mb-6 pill-button bg-primary/10 text-primary border-primary/20 animate-fade-in-scale">
+              <BarChart3 className="w-3 h-3 mr-1 animate-pulse" />
+              Advanced Analytics
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold font-poppins text-foreground mb-6">
+              <span className="gradient-text animate-glow">Cultural</span> Insights
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-inter">
+              Deep analytics powered by AI to reveal your taste evolution and cultural impact patterns
+            </p>
             
-            <div className="flex items-center gap-3 mt-4 md:mt-0">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <Select value={timeRange} onValueChange={setTimeRange}>
-                <SelectTrigger className="w-32 glass-card border-0">
+                <SelectTrigger className="w-40 glass-card border-primary/20 bg-white/5 focus-visible:ring-2 focus-visible:ring-primary/50">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="glass-card border-primary/20">
                   <SelectItem value="7d">Last 7 days</SelectItem>
                   <SelectItem value="30d">Last 30 days</SelectItem>
                   <SelectItem value="90d">Last 3 months</SelectItem>
@@ -137,7 +139,7 @@ const Insights = () => {
                 </SelectContent>
               </Select>
               
-              <Button variant="outline">
+              <Button variant="pill-glass" className="hover-lift">
                 <Calendar className="w-4 h-4 mr-2" />
                 Export Report
               </Button>
@@ -145,100 +147,139 @@ const Insights = () => {
           </div>
 
           {/* Key Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {keyMetrics.map((metric, index) => (
-              <Card key={index} className="glass-card hover-lift">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <Card key={index} className="glass-card hover-lift group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     {metric.title}
                   </CardTitle>
-                  <div className="text-primary">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                     {metric.icon}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-foreground mb-1">{metric.value}</div>
-                  <div className="flex items-center space-x-2 text-xs">
-                    <div className={`flex items-center space-x-1 ${
-                      metric.changeType === "positive" ? "text-secondary" : "text-destructive"
-                    }`}>
+                <CardContent className="space-y-4">
+                  <div className="text-3xl font-bold text-foreground mb-2">{metric.value}</div>
+                  <div className="flex items-center space-x-2">
+                    <Badge className={`${
+                      metric.changeType === "positive" 
+                        ? "bg-secondary/20 text-secondary border-secondary/30" 
+                        : "bg-destructive/20 text-destructive border-destructive/30"
+                    } rounded-full px-3 py-1`}>
                       {metric.changeType === "positive" ? 
-                        <TrendingUp className="w-3 h-3" /> : 
-                        <TrendingDown className="w-3 h-3" />
+                        <TrendingUp className="w-3 h-3 mr-1" /> : 
+                        <TrendingDown className="w-3 h-3 mr-1" />
                       }
-                      <span>{metric.change}</span>
-                    </div>
-                    <span className="text-muted-foreground">vs last period</span>
+                      <span className="font-medium">{metric.change}</span>
+                    </Badge>
+                    <span className="text-xs text-muted-foreground">vs last period</span>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-2">{metric.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{metric.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           {/* Main Analytics */}
-          <Tabs defaultValue="breakdown" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 glass-card">
-              <TabsTrigger value="breakdown">Category Breakdown</TabsTrigger>
-              <TabsTrigger value="trends">Trend Analysis</TabsTrigger>
-              <TabsTrigger value="comparison">Peer Comparison</TabsTrigger>
-              <TabsTrigger value="evolution">Taste Evolution</TabsTrigger>
-            </TabsList>
+          <Tabs defaultValue="breakdown" className="space-y-8">
+            <div className="flex justify-center">
+              <TabsList className="glass-card p-2 bg-white/5 border-primary/20 rounded-2xl backdrop-blur-xl">
+                <TabsTrigger 
+                  value="breakdown" 
+                  className="rounded-xl px-6 py-3 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-card transition-all duration-300"
+                >
+                  Category Breakdown
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="trends" 
+                  className="rounded-xl px-6 py-3 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-card transition-all duration-300"
+                >
+                  Trend Analysis
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="comparison" 
+                  className="rounded-xl px-6 py-3 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-card transition-all duration-300"
+                >
+                  Peer Comparison
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="evolution" 
+                  className="rounded-xl px-6 py-3 data-[state=active]:bg-gradient-primary data-[state=active]:text-white data-[state=active]:shadow-card transition-all duration-300"
+                >
+                  Taste Evolution
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
             {/* Category Breakdown */}
             <TabsContent value="breakdown" className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card className="glass-card">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <PieChart className="w-5 h-5 text-primary" />
+                <Card className="glass-card hover-lift">
+                  <CardHeader className="pb-6">
+                    <CardTitle className="flex items-center gap-3 text-xl">
+                      <div className="w-10 h-10 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                        <PieChart className="w-5 h-5 text-white" />
+                      </div>
                       Cultural Interest Distribution
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-base text-muted-foreground">
                       Breakdown of your cultural engagement by category
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-6">
                     {categoryBreakdown.map((category, index) => (
-                      <div key={index} className="space-y-2">
+                      <div key={index} className="space-y-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-foreground">{category.category}</span>
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm text-muted-foreground">{category.value}</span>
-                            <Badge variant="secondary" className="text-xs">{category.percentage}%</Badge>
+                          <span className="font-medium text-foreground">{category.category}</span>
+                          <div className="flex items-center gap-3">
+                            <span className="text-muted-foreground font-mono">{category.value}</span>
+                            <Badge 
+                              variant="secondary" 
+                              className="bg-primary/10 text-primary border-primary/20 rounded-full px-3 py-1 font-bold"
+                            >
+                              {category.percentage}%
+                            </Badge>
                           </div>
                         </div>
-                        <Progress value={category.percentage} className="h-2" />
+                        <Progress value={category.percentage} className="h-3 bg-muted/30" />
                       </div>
                     ))}
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Activity className="w-5 h-5 text-primary" />
+                <Card className="glass-card hover-lift">
+                  <CardHeader className="pb-6">
+                    <CardTitle className="flex items-center gap-3 text-xl">
+                      <div className="w-10 h-10 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                        <Activity className="w-5 h-5 text-white" />
+                      </div>
                       Engagement Heatmap
                     </CardTitle>
-                    <CardDescription>
-                      Your cultural activity patterns over time
+                    <CardDescription className="text-base text-muted-foreground">
+                      Your cultural activity patterns over the past 7 weeks
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-7 gap-1 mb-4">
+                  <CardContent className="space-y-6">
+                    <div className="grid grid-cols-7 gap-2 p-4 rounded-xl bg-white/5">
                       {Array.from({ length: 49 }, (_, i) => (
                         <div
                           key={i}
-                          className={`w-3 h-3 rounded-sm ${
+                          className={`w-4 h-4 rounded-lg transition-all duration-300 hover:scale-125 ${
                             Math.random() > 0.3 ? 
-                            Math.random() > 0.7 ? 'bg-primary' : 'bg-primary/60' : 'bg-muted'
+                            Math.random() > 0.7 ? 'bg-gradient-primary shadow-card' : 'bg-primary/60' : 'bg-muted/50'
                           }`}
                         />
                       ))}
                     </div>
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
-                      <span>Less active</span>
-                      <span>More active</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded bg-muted/50"></div>
+                        <span className="text-sm text-muted-foreground">Less active</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-muted-foreground">More active</span>
+                        <div className="w-3 h-3 rounded bg-gradient-primary"></div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
