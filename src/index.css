@@ -285,7 +285,7 @@
 
   .ripple::before {
     content: '';
-    @apply absolute inset-0 rounded-inherit opacity-0 transition-opacity duration-300;
+    @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
     background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%);
   }
 
