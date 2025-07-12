@@ -17,17 +17,18 @@ import {
   Headphones,
   Camera,
   Play,
-  ChevronLeft,
-  ChevronRight,
   Twitter,
   Instagram,
   Facebook,
-  Youtube
+  Youtube,
+  Zap,
+  Globe,
+  Shield,
+  Infinity
 } from "lucide-react";
 
 const Index = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const features = [
     {
@@ -50,34 +51,32 @@ const Index = () => {
     }
   ];
 
-  const testimonials = [
+  const platformBenefits = [
     {
-      quote: "Found my favorite jazz festival through CultureSense! The AI understood my taste better than I did.",
-      author: "Sarah Chen",
-      role: "Music Enthusiast",
-      location: "San Francisco"
+      icon: <Zap className="w-6 h-6" />,
+      title: "Lightning Fast",
+      description: "Get instant recommendations",
+      color: "accent-amber"
     },
     {
-      quote: "The restaurant recommendations are incredible. Every suggestion feels personally curated for my palate.",
-      author: "Marcus Rodriguez",
-      role: "Food Blogger",
-      location: "New York"
+      icon: <Globe className="w-6 h-6" />,
+      title: "Global Reach",
+      description: "150+ countries supported",
+      color: "secondary"
     },
     {
-      quote: "CultureSense introduced me to Nordic design philosophy. It's like having a cultural mentor in my pocket.",
-      author: "Emma Thompson",
-      role: "Interior Designer",
-      location: "London"
+      icon: <Shield className="w-6 h-6" />,
+      title: "Privacy First",
+      description: "Your data stays secure",
+      color: "primary"
+    },
+    {
+      icon: <Infinity className="w-6 h-6" />,
+      title: "Endless Discovery",
+      description: "Never run out of options",
+      color: "accent-rose"
     }
   ];
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -202,73 +201,85 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Platform Benefits Section */}
       <section className="relative py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              <span className="gradient-text">Cultural Connections</span> Worldwide
+              <span className="gradient-text">Why Choose</span> CultureSense?
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Discover what our community says about their cultural journeys
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Join millions of users who trust our platform for discovering their next favorite cultural experience
             </p>
           </div>
 
-          <div className="relative">
-            <Card className="glass-card border-white/20 p-8 text-center min-h-[300px] flex flex-col justify-center">
-              <div className="mb-8">
-                <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-accent-amber fill-current" />
-                  ))}
+          {/* Animated Counter Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {platformBenefits.map((benefit, index) => (
+              <Card 
+                key={index}
+                className="glass-card border-white/20 text-center p-6 hover-lift group animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center bg-${benefit.color}/20 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`text-${benefit.color}`}>
+                    {benefit.icon}
+                  </div>
                 </div>
-                <blockquote className="text-xl md:text-2xl text-foreground font-medium leading-relaxed mb-6">
-                  "{testimonials[currentTestimonial].quote}"
-                </blockquote>
-                <div className="space-y-2">
-                  <div className="font-bold text-foreground text-lg">
-                    {testimonials[currentTestimonial].author}
+                <h3 className="font-bold text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-sm text-muted-foreground">{benefit.description}</p>
+              </Card>
+            ))}
+          </div>
+
+          {/* Interactive Demo Preview */}
+          <div className="max-w-4xl mx-auto">
+            <Card className="glass-card border-white/20 p-8 hover-lift">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Experience AI-Powered Recommendations
+                </h3>
+                <p className="text-muted-foreground">
+                  See how our AI understands your taste and delivers personalized cultural discoveries
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
+                    <Users className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="text-muted-foreground">
-                    {testimonials[currentTestimonial].role} • {testimonials[currentTestimonial].location}
+                  <h4 className="font-semibold text-foreground">Tell Us Your Preferences</h4>
+                  <p className="text-sm text-muted-foreground">Share what you love - music genres, food types, travel styles</p>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto">
+                    <Brain className="w-8 h-8 text-secondary" />
                   </div>
+                  <h4 className="font-semibold text-foreground">AI Analyzes Your Taste</h4>
+                  <p className="text-sm text-muted-foreground">Our algorithm creates your unique cultural DNA profile</p>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-accent-amber/20 flex items-center justify-center mx-auto">
+                    <Star className="w-8 h-8 text-accent-amber" />
+                  </div>
+                  <h4 className="font-semibold text-foreground">Discover Amazing Experiences</h4>
+                  <p className="text-sm text-muted-foreground">Get curated recommendations you'll absolutely love</p>
                 </div>
               </div>
+              
+              <div className="text-center mt-8">
+                <Button 
+                  onClick={() => setShowAuthModal(true)}
+                  className="ripple bg-gradient-primary text-white hover:scale-105 transition-all duration-300"
+                >
+                  Start Your Cultural Journey
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             </Card>
-
-            {/* Navigation Buttons */}
-            <Button
-              onClick={prevTestimonial}
-              variant="outline"
-              size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 glass-card border-white/20 hover:scale-110"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            
-            <Button
-              onClick={nextTestimonial}
-              variant="outline"
-              size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 glass-card border-white/20 hover:scale-110"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-6">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial 
-                      ? 'bg-primary scale-125' 
-                      : 'bg-muted hover:bg-primary/50'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
