@@ -66,13 +66,14 @@
     
     /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, #7C3AED, #2DD4BF);
+    --gradient-hero-bg: linear-gradient(135deg, #4C1D95, #115E59);
     --gradient-nav: linear-gradient(135deg, 
       rgba(124, 58, 237, 0.9), 
       rgba(45, 212, 191, 0.9)
     );
     --gradient-glass: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.8), 
-      rgba(255, 255, 255, 0.6)
+      rgba(255, 255, 255, 0.1), 
+      rgba(255, 255, 255, 0.05)
     );
     --gradient-hero: linear-gradient(135deg, 
       rgba(124, 58, 237, 0.05), 
@@ -83,6 +84,12 @@
       hsl(var(--neuro-bg)), 
       hsl(240 5% 94%)
     );
+    
+    /* OAuth Provider Colors */
+    --google-blue: #4285F4;
+    --microsoft-red: #F25022;
+    --github-dark: #181717;
+    --apple-black: #000000;
     
     /* Enhanced Shadows & Effects */
     --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37),
@@ -167,13 +174,14 @@
 
     /* Enhanced Gradients */
     --gradient-primary: linear-gradient(135deg, #7C3AED, #2DD4BF);
+    --gradient-hero-bg: linear-gradient(135deg, #4C1D95, #115E59);
     --gradient-nav: linear-gradient(135deg, 
       rgba(124, 58, 237, 0.8), 
       rgba(45, 212, 191, 0.8)
     );
     --gradient-glass: linear-gradient(135deg, 
-      rgba(30, 41, 59, 0.7), 
-      rgba(30, 41, 59, 0.5)
+      rgba(30, 41, 59, 0.1), 
+      rgba(30, 41, 59, 0.05)
     );
     --gradient-hero: linear-gradient(135deg, 
       rgba(124, 58, 237, 0.1), 
@@ -184,6 +192,12 @@
       hsl(var(--neuro-bg)), 
       hsl(215 25% 14%)
     );
+    
+    /* OAuth Provider Colors */
+    --google-blue: #4285F4;
+    --microsoft-red: #F25022;
+    --github-dark: #f6f8fa;
+    --apple-black: #ffffff;
 
     /* Enhanced Shadows & Effects */
     --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4),
@@ -292,6 +306,52 @@
   .ripple:active::before {
     @apply opacity-100;
     animation: ripple-effect 0.6s ease-out;
+  }
+
+  /* OAuth Button Styles */
+  .oauth-button {
+    @apply px-6 py-4 rounded-2xl transition-all duration-300 backdrop-blur-md border;
+    box-shadow: var(--shadow-glass);
+  }
+
+  .oauth-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .oauth-google {
+    background: linear-gradient(135deg, var(--google-blue), rgba(66, 133, 244, 0.8));
+    border-color: var(--google-blue);
+  }
+
+  .oauth-microsoft {
+    background: linear-gradient(135deg, var(--microsoft-red), rgba(242, 80, 34, 0.8));
+    border-color: var(--microsoft-red);
+  }
+
+  .oauth-github {
+    background: linear-gradient(135deg, var(--github-dark), rgba(24, 23, 23, 0.8));
+    border-color: var(--github-dark);
+  }
+
+  .oauth-apple {
+    background: linear-gradient(135deg, var(--apple-black), rgba(0, 0, 0, 0.8));
+    border-color: var(--apple-black);
+  }
+
+  /* Full-screen Hero Background */
+  .hero-glassmorphic {
+    background: var(--gradient-hero-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glassmorphic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
   }
 
   /* Animation Classes */
